@@ -4,16 +4,13 @@
     <el-container>
       <el-button @click="startHacking">Start</el-button>
       <el-button @click="testApi">test api</el-button>
-    </el-container>
-
-    <el-container>
-      <el-input v-model="price" placeholder="请输入价格" @blur="get_house_title"></el-input>
+      <el-input v-model="price" placeholder="请输入价格"></el-input>
       <el-button @click="get_house_title">获取房源信息</el-button>
     </el-container>
 
     <el-container>
       <el-main>
-        <el-table :data="houseTable">
+        <el-table :data="houseTable" @row-click="handleTableClick">
           <el-table-column prop="title" label="标题" width="400">
           </el-table-column>
           <el-table-column prop="price" label="价格" width="120">
@@ -28,7 +25,10 @@
 const api_url = 'http://localhost:3000/api'
 
 export default {
-
+  mounted() {
+    this.price = this.$route.query.price
+    this.get_house_title()
+  },
   methods: {
     startHacking () {
       this.$notify({
@@ -67,12 +67,27 @@ export default {
           _this.houseTable.push(item)
         }
       })
+    },
+    handleTableClick(event){
+      console.log('点击的是:'+event['title']+event['price'])
+      this.$router.push({
+        path:'/',
+        query:{
+          price:event['price']+100
+        }
+      })
     }
   },
   data() {
     return {
       price: '',
       houseTable:[]
+    }
+  },
+  watch :{
+    '$route': function (to, from) {
+      //执行数据更新查询,重新加载
+      location.reload();
     }
   }
 }

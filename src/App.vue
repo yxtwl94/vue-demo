@@ -4,6 +4,8 @@
     <div>
       <el-button @click="startHacking">Start</el-button>
       <el-button @click="testApi">test api</el-button>
+      <el-input v-model="price" placeholder="请输入价格" @blur="get_house_title"></el-input>
+      <el-button @click="get_house_title">house title api</el-button>
     </div>
   </div>
 </template>
@@ -31,6 +33,20 @@ export default {
         alert(res.data['name'])
         console.log(res.data)
       })
+    },
+    get_house_title(){
+      this.$ajax.get(api_url+'/demo/get_house_title',{
+        params:{
+          price:this.price, //获取价格=500的数据
+        }
+      }).then(function (res){
+        console.log(res.data)
+      })
+    }
+  },
+  data() {
+    return {
+      price: ''
     }
   }
 }

@@ -18,7 +18,20 @@
         </el-table>
       </el-main>
     </el-container>
+
+    <el-container>
+      <el-main>
+        <el-button @click="generateId(100)">btn</el-button>
+        <div class="main divs" v-for="item in demoArr">
+          <el-input type="text" v-model="item.name"></el-input>
+        </div>
+      </el-main>
+
+
+    </el-container>
   </div>
+
+
 </template>
 
 <script>
@@ -30,6 +43,14 @@ export default {
     this.get_house_title()
   },
   methods: {
+    show(divId){
+      console.log('当前id '+divId)
+    },
+    generateId(n){
+      for(var i=0;i<n;i++){
+        this.demoArr.push({name:i})
+      }
+    },
     startHacking () {
       this.$notify({
         title: 'It works!',
@@ -81,7 +102,8 @@ export default {
   data() {
     return {
       price: '',
-      houseTable:[]
+      houseTable:[],
+      demoArr:[]
     }
   },
   watch :{

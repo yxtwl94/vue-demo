@@ -25,9 +25,13 @@
         <div class="main divs" v-for="(item,index) in demoArr" :id="'divId_'+(index)+'_'+item.name">
           ok
         </div>
+        <el-button id="down id" @click="fileDownload">download</el-button>
+
+        <el-upload action="https://jsonplaceholder.typicode.com/posts/">
+          <el-button size="big" type="primary">点击上传</el-button>
+        </el-upload>
+
       </el-main>
-
-
     </el-container>
   </div>
 
@@ -43,9 +47,6 @@ export default {
     this.get_house_title()
   },
   methods: {
-    show(divId){
-      console.log('当前id '+divId)
-    },
     generateId(n){
       for(var i=0;i<n;i++){
         this.demoArr.push({name:i})
@@ -97,6 +98,9 @@ export default {
           price:event['price']+100
         }
       })
+    },
+    fileDownload(){
+      window.location.href='/public/test.log'
     }
   },
   data() {

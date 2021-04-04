@@ -22,7 +22,7 @@
     <el-container>
       <el-main>
         <el-button @click="generateId(100)">btn</el-button>
-        <div class="main divs" v-for="(item,index) in demoArr" :id="'divId_'+(index)">
+        <div class="main divs" v-for="(item,index) in demoArr" :id="'divId_'+(index)+'_'+item.name">
           ok
         </div>
       </el-main>

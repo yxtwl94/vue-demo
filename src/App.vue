@@ -22,8 +22,8 @@
     <el-container>
       <el-main>
         <el-button @click="generateId(100)">btn</el-button>
-        <div class="main divs" v-for="item in demoArr">
-          <el-input type="text" v-model="item.name"></el-input>
+        <div class="main divs" v-for="(item,index) in demoArr" :id="'divId_'+(index)">
+          ok
         </div>
       </el-main>
 

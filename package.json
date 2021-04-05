@@ -34,6 +34,7 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "element-ui": "^2.3.4",
+    "fs": "0.0.1-security",
     "safe-buffer": "^5.2.1",
     "vue": "^2.5.16",
     "vue-router": "^3.5.1"

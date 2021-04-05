@@ -46,6 +46,12 @@ app.get('/api/demo/get_house_title',function (req, res){
         res.send(result)
     })
 })
+app.get('/api/demo/get_all_files',function (req,res){
+    var path = req.query['path']
+    files = fs.readdirSync(path)
+    console.log(files)
+    res.send(files)
+})
 
 // 监听端口
 app.listen(3000);

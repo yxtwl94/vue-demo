@@ -21,11 +21,10 @@
 
     <el-container>
       <el-main>
-        <el-button @click="generateId(100)">btn</el-button>
+        <el-button @click="generateId(5)">btn</el-button>
         <div class="main divs" v-for="(item,index) in demoArr" :id="'divId_'+(index)+'_'+item.name">
           ok
         </div>
-        <el-button id="down id" @click="filePreview">Preview</el-button>
         <el-button @click="gotoNew">跳转新页面</el-button>
       </el-main>
 
@@ -45,9 +44,7 @@ export default {
   },
   methods: {
     gotoNew(){
-      this.$router.push({
-        path:'/fileView',
-      })
+      window.open('/#/fileView/')
     },
     generateId(n){
       for(var i=0;i<n;i++){
@@ -101,10 +98,6 @@ export default {
         }
       })
     },
-    filePreview(){
-      //window.location.href='/public/test.log'
-      window.open("/src/public/test2.log")
-    }
   },
   data() {
     return {
